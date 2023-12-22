@@ -2,21 +2,31 @@ var numberOfDrum = document.querySelectorAll(".drum").length;
 
 for( var i = 0; i<numberOfDrum; i++){
 
+//Click action
     document.querySelectorAll(".drum")[i].addEventListener("click", function () {
-        this.style.color ="white";
+        
        
        var innerhtml = this.innerHTML;
-       makesound(innerhtml);
-        
-
+       makesound(innerhtml);    
+        highlighter(innerhtml);
     });
     
 }
+// Key Press
 document.addEventListener("keydown", function(event){
     makesound(event.key);
-        
+    highlighter(event.key);
 
 });
+// highlighter of keypress
+function highlighter(high){
+    var action = document.querySelector("."+ high);
+    action.classList.add("pressed");
+
+    setTimeout(function() {
+        action.classList.remove("pressed");
+    }, 100);
+}
 function makesound(key){
     switch (key) {
         case "w":
@@ -60,8 +70,9 @@ function makesound(key){
         
             break;  
                       
-        default:alert("Not supported: "+ innerhtml);
-            break;
+        default:
+            alert("Not supported: "+ innerhtml);
+            
        }
        
        
