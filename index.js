@@ -6,8 +6,19 @@ for( var i = 0; i<numberOfDrum; i++){
         this.style.color ="white";
        
        var innerhtml = this.innerHTML;
-       
-        switch (innerhtml) {
+       makesound(innerhtml);
+        
+
+    });
+    
+}
+document.addEventListener("keydown", function(event){
+    makesound(event.key);
+        
+
+});
+function makesound(key){
+    switch (key) {
         case "w":
             var audio = new Audio('tom-1.mp3');
             audio.play(); 
@@ -57,7 +68,4 @@ for( var i = 0; i<numberOfDrum; i++){
        
         var audio = new Audio('tom-1.mp3');
         audio.play();
-
-    });
-    
 }
